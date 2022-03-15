@@ -1,0 +1,60 @@
+scalar GraphQLDate
+
+type User{
+    _id: ID! 
+    firstName: String!
+    lastName: String!
+    username: String!
+    passwordHash: String!
+}
+
+type Blog{
+    _id: ID!
+    blogTitle : String!
+    blogSummary: String!
+    createdDate : GraphQLDate!
+    modifiedDate : GraphQLDate!
+    username: String!
+}
+
+input BlogInput{
+    _id: ID
+    blogTitle : String!
+    blogSummary: String!
+    createdDate : GraphQLDate
+    modifiedDate : GraphQLDate
+    username: String
+}
+
+type Comment{
+    _id: ID!
+    blogId: String!
+    comment: String!
+    createdDate: GraphQLDate!
+    username: String!
+}
+
+input CommentInput{
+    _id: ID
+    blogId: String!
+    comment: String!
+    createdDate: GraphQLDate
+    username: String!
+}
+
+###### Top level declarations
+
+type Query{
+    GetBlogs:[Blog]!
+    GetComments(blogId: String!):[Comment]
+    GetBlog(blogId: String!):[Blog]!
+    GetBlogsByUser(username: String!):[Blog]!
+}
+
+type Mutation{
+    AddBlog(blog :BlogInput!): Blog
+    UpdateBlog(blog :BlogInput!): Blog
+    DeleteBlog(id: String!): String
+    AddComment(comment :CommentInput!): Comment
+}
+
