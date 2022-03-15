@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import AddComment from "./AddComment";
 import graphQLFetch from "./graphQLFetch";
@@ -8,26 +10,6 @@ class BlogPost extends React.Component {
     constructor() {
         super();
         this.state = { blog :[]};
-        /* this.wallpapers = [
-            {
-                0:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiYN387ZsZFDyz36RwA2W1Es06kYa7sQECrg&usqp=CAU"
-            },
-            {
-                1:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQe2iSLuySeyQvbc7FZWz8mbLzGS2iFbaJC6w&usqp=CAU"
-            },
-            {
-                2:"https://c4.wallpaperflare.com/wallpaper/465/308/900/seattle-at-night-from-the-space-needle-hdr-wallpaper-preview.jpg"
-            },
-            {
-                3:"https://www.cashadvance6online.com/data/archive/img/3068163749.jpeg"
-            },
-            {
-                4:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSh7mnOwYjrZ_5zdgLPJ1nplONO-Gp8pF_GAQ&usqp=CAU"
-            },
-            {
-                5:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT13kPiFpqbMqTSksp4R4rWahlGy2aTlZ9BLA&usqp=CAU"
-            }
-        ]; */
         this.blogID="";
       }
 
@@ -38,11 +20,6 @@ class BlogPost extends React.Component {
             const id = queryParams.get('blogid');
             this.blogID =id;
             this.getData();
-
-            /* this.queryParams = new URLSearchParams(window.location.search);
-            const id = this.queryParams.get('blogid');
-            this.blogID =id;
-            this.getData(); */
       }
 
     async getData()

@@ -1,7 +1,7 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import graphQLFetch from "./graphQLFetch";
 import { Link } from "react-router-dom";
-import {Modal, Button} from 'react-bootstrap';
 
 
 

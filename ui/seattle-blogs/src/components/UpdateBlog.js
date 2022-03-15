@@ -41,32 +41,6 @@ export default function UpdateBlog() {
       fetchMyAPI()
     }, [])
 
-    /* const Update = (e) =>{
-        alert("clicked");
-        alert(blogTitle);
-        alert(blogSummary);
-        e.preventDefault();
-
-        useEffect(() => {
-            async function fetchMyAPI() {
-              const query =`mutation {
-                UpdateBlog(blog: {
-                  _id:"${blogId}"
-                  blogTitle:"${blogTitle}"
-                  blogSummary:"${blogSummary}"
-                }) {
-                  blogTitle
-                  blogSummary
-                }
-              }`;
-              
-              let response = await graphQLFetch(query);
-              response = await response.UpdateBlog;
-            }
-            fetchMyAPI()
-          }, [])
-    } */
-
     const Update = (e) =>{
         e.preventDefault();
         UpdatedBlog({id:blogId,title:blogTitle,summary:blogSummary});
