@@ -73,7 +73,7 @@ export default class MyBlogs extends React.Component {
       </td>
       <td>
       <div>
-      <Link to={{pathname:"/update", state:blog}}><i className="edit icon"></i></Link>
+      <Link to={`/updateBlog/${blog._id}`}><i className="edit icon"></i></Link>
       <i onClick={(e)=>{this.Delete(blog._id)}} className="trash alternate outline icon" style={{color:"red", marginTop:"7px"}}></i>
       </div>
       </td>

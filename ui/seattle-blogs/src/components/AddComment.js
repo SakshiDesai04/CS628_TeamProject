@@ -1,9 +1,11 @@
 import React from "react";
 import graphQLFetch from "./graphQLFetch";
 
+
 class AddComment extends React.Component{
 state={
-    comments:[]
+    comments:[],
+    comment:""
 }
 
 async GetComments(id) {
@@ -54,26 +56,38 @@ async GetComments(id) {
     return Math.floor(seconds) + " seconds";
   }
 
+  Add = (e)=>
+{
+    e.preventDefault();
+    if(this.state.comment==="")
+    {
+        alert("*Add Comment to Post");
+        return
+    }
+
+    this.AddComment();
+}
 
 async AddComment() {
     const query = `
-    mutation {
-        AddBlog(blog: {blogTitle:"${this.state.blogTitle}",
-        blogSummary:"${this.state.blogSummary}",
-        username:"${this.state.username}"
-        }) {
-          _id
-          blogTitle
-        }
+    mutation{ AddComment(comment:{
+      blogId:"${this.props.blogId}",
+      comment:"${this.state.comment}"
+      username:"${this.props.username}"
+      }){
+       _id
+       comment
+       blogId
+      }
       }
       `;
     const data = await graphQLFetch(query);
     if (data)
     {
-        alert("Blog Added Successfully!");
-        this.setState({blogTitle: "",
-        blogSummary:"",
-        username:this.props.username});
+        alert("Comment Added Successfully!");
+        this.setState({comment: ""});
+        this.GetComments(this.props.blogId);
+
     };
   }
 
@@ -108,8 +122,8 @@ render(){
             </div>
         
         <div class="ui fluid action input">
-        <input type="text" placeholder="Comment..."/>
-        <button class="ui button">Post</button>
+        <input type="text" value = {this.state.comment} onChange={(e)=>{this.setState({comment:e.target.value})}} placeholder="Comment..."/>
+        <button onClick={this.Add} class="ui button">Post</button>
         </div>
         </div>
     );

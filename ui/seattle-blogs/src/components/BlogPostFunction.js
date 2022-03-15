@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 import graphQLFetch from "./graphQLFetch";
 import AddComment from "./AddComment";
 import Header from "./Header";
+import { useAuth0 } from "@auth0/auth0-react";
 
 
 
@@ -40,6 +41,16 @@ export default function BlogPostFunction() {
     let params = useParams();
 
     const blogId = params.id;
+    const { user, isAuthenticated } = useAuth0();
+    let username = "Anonymous User";
+
+    if(isAuthenticated)
+    {
+        username=user.email;
+    }
+    else{
+        username="Anonymous User";
+    }
 
     useEffect(() => {
       async function fetchMyAPI() {
@@ -87,7 +98,7 @@ export default function BlogPostFunction() {
       <p>Last updated {timeSinceDate(data.modifiedDate)} ago</p>
   </div>
 </div>
-<AddComment blogId={data._id}/>
+<AddComment blogId={data._id} username={username}/>
   </div>
   </div>); } else{ return null; }
 }

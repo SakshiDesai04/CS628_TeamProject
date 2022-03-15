@@ -1,13 +1,7 @@
 import {React, Component } from 'react';
-import Header from "./Header";
-import BlogList from "./BlogList";
-import Profile from "./Profile";
-import AddBlog from "./AddBlog";
 import { BrowserRouter as Router, Route, Link, Routes, Outlet, useParams } from 'react-router-dom'
 import Home from './Home';
-import BlogPost from './BlogPost';
 import MyBlog from './MyBlog';
-import BlogSummary from './BlogSummary';
 import AddNewBlog from './AddNewBlog';
 import UpdateBlog from './UpdateBlog';
 import BlogPostFunction from './BlogPostFunction';
@@ -27,6 +21,7 @@ function App()
         <Route path='/addBlog' element={<AddNewBlog />}/>
         <Route path='/update' element={<UpdateBlog />}/>
         <Route path='/blogPost/:id' element={<BlogPostFunction />}/>
+        <Route path='/updateBlog/:id' element={<UpdateBlog/>}/>
       </Routes>
   </Router>
   )
